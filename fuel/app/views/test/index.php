@@ -3,6 +3,7 @@
 
 </head>
 <body>
+<?= $error ?>
 <?= $form ?>
 </body>
 </html>
