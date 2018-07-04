@@ -5,10 +5,14 @@ class Controller_Test extends Controller
     function action_index()
     {
         $form = MyFieldset::forge();
-        $myfield = new Myfield('elem');
-        $myfield->setTemplate("{checkbox}Amazonランキング {field1} 以下 {field2} 以上");
-        $myfield->add_rule('valid_string', 'numeric');
+        $myfield = new Myfield('elem1');
+        $myfield->setTemplate("<div>{checkbox}Amazonランキング {field1} 以下 {field2} 以上</div>");
+        $myfield->add_field_rule(1,'valid_string', 'numeric')->set_label('項目１');
         $form->add($myfield);
+        $myfield2 = new Myfield('elem2');
+        $myfield2->setTemplate("<div>{checkbox}Amazonランキング {field1} 以下 {field2} 以上 {field3}</div>");
+        $myfield2->add_field_rule(1,'valid_string', 'numeric')->set_label('項目２');
+        $form->add($myfield2);
         $form->add('submit', '', ['type' => 'submit', 'value' => '登録']);
         $error = '';
         if (\Input::method() == 'POST') {
